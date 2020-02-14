@@ -16,10 +16,10 @@ int main(){
 int max = 6;
 int randa, randb, randc, randd;
 int guessa, guessb, guessc, guessd;
-char answer = 'y';
+char answer;
 
 cout << "Hello there is a random four digit number that you have to guess!" << endl;
-while (answer == 'y'){
+do {
 
 srand(time(0));
 randa = (rand() % max) + 1;
@@ -30,7 +30,34 @@ randd = (rand() % max) + 1;
 
 for (int i = 0; i < 10; i++){
   cout << "Please enter your four digit guess spaced out (1-6): ";
-  cin >> guessa >> guessb >> guessc >> guessd;
+
+while(!(cin >> guessa)){
+  cout << "Error: the value you entered was not a numeric!" << endl;
+  cin.clear();
+  cin.ignore(100, '\n');
+  cout << "Please enter your four digit guess spaced out (1-6): ";
+}
+
+while(!(cin >> guessb)){
+  cout << "Error: the value you entered was not a numeric!" << endl;
+  cin.clear();
+  cin.ignore(100, '\n');
+  cout << "Please enter your four digit guess spaced out (1-6): ";
+}
+
+while(!(cin >> guessc)){
+  cout << "Error: the value you entered was not a numeric!" << endl;
+  cin.clear();
+  cin.ignore(100, '\n');
+  cout << "Please enter your four digit guess spaced out (1-6): ";
+}
+
+while(!(cin >> guessd)){
+  cout << "Error: the value you entered was not a numeric!" << endl;
+  cin.clear();
+  cin.ignore(100, '\n');
+  cout << "Please enter your four digit guess spaced out (1-6): ";
+}
 if (guessa < 1 || guessa > 6 || guessb < 1 || guessb > 6 || guessc < 1 || guessc > 6 
 || guessd < 1 || guessd > 6 ){
   cout << "Remember each digit should be 1-6" << endl;
@@ -72,7 +99,7 @@ if (guessa == randa && guessb == randb && guessc == randc && guessd == randd){
 cout << "Better luck next time!" << endl;
 cout << "Do you want to play again (y for yes, or press any key to end)? ";
 cin >> answer;
-}
+} while ( answer == 'y');
 cout << "Bye...";
 return(0);
 }
