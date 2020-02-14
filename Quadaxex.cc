@@ -1,5 +1,5 @@
 /**
- *   @file: quadrants.cc
+ *   @file: Quadaxex.cc
  *   @author: Rocco Pearce
  *   @date: 2/11/2020
   */
@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <cmath>
+#include <ctime>
 
 using namespace std;
 
@@ -15,14 +16,21 @@ int main(){
 int max = 6;
 int randa, randb, randc, randd;
 int guessa, guessb, guessc, guessd;
+char answer = 'y';
+
+cout << "Hello there is a random four digit number that you have to guess!" << endl;
+while (answer == 'y'){
+
+srand(time(0));
 randa = (rand() % max) + 1;
 randb = (rand() % max) + 1;
 randc = (rand() % max) + 1;
 randd = (rand() % max) + 1;
 
+
 for (int i = 0; i < 10; i++){
-cout << "Please enter your four digit guess spaced out (1-6): ";
-cin >> guessa >> guessb >> guessc >> guessd;
+  cout << "Please enter your four digit guess spaced out (1-6): ";
+  cin >> guessa >> guessb >> guessc >> guessd;
 if (guessa < 1 || guessa > 6 || guessb < 1 || guessb > 6 || guessc < 1 || guessc > 6 
 || guessd < 1 || guessd > 6 ){
   cout << "Remember each digit should be 1-6" << endl;
@@ -57,10 +65,14 @@ if (guessd == randd){          // digit 4
   cout << "| |" << endl;
 }
 if (guessa == randa && guessb == randb && guessc == randc && guessd == randd){
-  cout << "Congradulations you guessed the number!";
+  cout << "Congratulations you guessed the number!";
   exit(0);
+} 
 }
+cout << "Better luck next time!" << endl;
+cout << "Do you want to play again (y for yes, or press any key to end)? ";
+cin >> answer;
 }
-cout << "Better luck next time!";
+cout << "Bye...";
 return(0);
 }
